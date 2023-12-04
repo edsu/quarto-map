@@ -58,3 +58,11 @@ Plot.plot({
   margin: 50
 })
 ```
+
+## Data
+
+This the underlying CSV dataset that is getting filtered.
+
+```{ojs}
+Inputs.table(filtered)
+```
