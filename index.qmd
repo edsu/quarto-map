@@ -18,8 +18,7 @@ data = FileAttachment("us_power_plants.csv").csv({type: true })
 ```
 
 ```{ojs}
-// create an set of checkbox inputs called energy_type
-
+//| panel: input
 viewof energy_type = Inputs.checkbox(
   ["coal", "geothermal", "hydroelectric", "natrual gas", "nuclear", "other", "solar", "wind"],
   {
