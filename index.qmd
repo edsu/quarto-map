@@ -51,9 +51,10 @@ colors = function(source) {
     "wind": "palegreen"
   }[source]
 }
+```
 
 ```{ojs}
-// now map using the `filtered` and `colors` functions:
+// now map using the filtered and colors functions:
 
 Plot.plot({
   projection: "albers-usa",
