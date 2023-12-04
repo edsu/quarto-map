@@ -37,7 +37,23 @@ filtered = data.filter(function(plant) {
 ```
 
 ```{ojs}
-// now map using the `filtered` 
+// create a function that returns a consistent color for an energy source
+
+colors = function(source) {
+  return {
+    "coal": "darkgray",
+    "geothermal": "orange",
+    "hydroelectric": "blue",
+    "natrual gas": "green",
+    "nuclear": "hotpink",
+    "other": "lavender",
+    "solar": "gold",
+    "wind": "palegreen"
+  }[source]
+}
+
+```{ojs}
+// now map using the `filtered` and `colors` functions:
 
 Plot.plot({
   projection: "albers-usa",
@@ -47,7 +63,7 @@ Plot.plot({
       x: "longitude",
       y: "latitude",
       r: "Total_MW",
-      fill: "PrimSource",
+      fill: p => colors(p.PrimSource),
       opacity: 0.7
     })
   ],

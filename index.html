@@ -151,37 +151,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="39" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 38;"><span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="co">// now map using the `filtered` </span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  <span class="dt">projection</span><span class="op">:</span> <span class="st">"albers-usa"</span><span class="op">,</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">geo</span>(states<span class="op">,</span> { <span class="dt">fill</span><span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#e2e2e2"</span> })<span class="op">,</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(filtered<span class="op">,</span> {</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"longitude"</span><span class="op">,</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"latitude"</span><span class="op">,</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>      <span class="dt">r</span><span class="op">:</span> <span class="st">"Total_MW"</span><span class="op">,</span></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"PrimSource"</span><span class="op">,</span></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>      <span class="dt">opacity</span><span class="op">:</span> <span class="fl">0.7</span></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>  <span class="dt">r</span><span class="op">:</span> { <span class="dt">range</span><span class="op">:</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">15</span>] }<span class="op">,</span></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>  <span class="dt">margin</span><span class="op">:</span> <span class="dv">50</span></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-4" data-nodetype="expression">
+<div class="quarto-ojs-syntax-error">
+<div class="sourceCode" id="cb4" data-startfrom="39" data-syntax-error-position="365" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 38;"><span id="cb4-39"><a href="#cb4-39"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb4-40"><a href="#cb4-40"></a><span class="co">// create a function that returns a consistent color for an energy source</span></span>
+<span id="cb4-41"><a href="#cb4-41"></a></span>
+<span id="cb4-42"><a href="#cb4-42"></a>colors <span class="op">=</span> <span class="fu">function</span><span class="op">(</span>source<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-43"><a href="#cb4-43"></a>  <span class="cf">return</span> <span class="op">{</span></span>
+<span id="cb4-44"><a href="#cb4-44"></a>    <span class="st">"coal"</span><span class="op">:</span> <span class="st">"darkgray"</span><span class="op">,</span></span>
+<span id="cb4-45"><a href="#cb4-45"></a>    <span class="st">"geothermal"</span><span class="op">:</span> <span class="st">"orange"</span><span class="op">,</span></span>
+<span id="cb4-46"><a href="#cb4-46"></a>    <span class="st">"hydroelectric"</span><span class="op">:</span> <span class="st">"blue"</span><span class="op">,</span></span>
+<span id="cb4-47"><a href="#cb4-47"></a>    <span class="st">"natrual gas"</span><span class="op">:</span> <span class="st">"green"</span><span class="op">,</span></span>
+<span id="cb4-48"><a href="#cb4-48"></a>    <span class="st">"nuclear"</span><span class="op">:</span> <span class="st">"hotpink"</span><span class="op">,</span></span>
+<span id="cb4-49"><a href="#cb4-49"></a>    <span class="st">"other"</span><span class="op">:</span> <span class="st">"lavender"</span><span class="op">,</span></span>
+<span id="cb4-50"><a href="#cb4-50"></a>    <span class="st">"solar"</span><span class="op">:</span> <span class="st">"gold"</span><span class="op">,</span></span>
+<span id="cb4-51"><a href="#cb4-51"></a>    <span class="st">"wind"</span><span class="op">:</span> <span class="st">"palegreen"</span></span>
+<span id="cb4-52"><a href="#cb4-52"></a>  <span class="op">}[</span>source<span class="op">]</span></span>
+<span id="cb4-53"><a href="#cb4-53"></a><span class="op">}</span></span>
+<span id="cb4-54"><a href="#cb4-54"></a></span>
+<span id="cb4-55"><a href="#cb4-55"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb4-56"><a href="#cb4-56"></a><span class="co">// now map using the `filtered` and `colors` functions:</span></span>
+<span id="cb4-57"><a href="#cb4-57"></a></span>
+<span id="cb4-58"><a href="#cb4-58"></a>Plot<span class="op">.</span><span class="fu">plot</span><span class="op">({</span></span>
+<span id="cb4-59"><a href="#cb4-59"></a>  projection<span class="op">:</span> <span class="st">"albers-usa"</span><span class="op">,</span></span>
+<span id="cb4-60"><a href="#cb4-60"></a>  marks<span class="op">:</span> <span class="op">[</span></span>
+<span id="cb4-61"><a href="#cb4-61"></a>    Plot<span class="op">.</span><span class="fu">geo</span><span class="op">(</span>states<span class="op">,</span> <span class="op">{</span> fill<span class="op">:</span> <span class="st">"white"</span><span class="op">,</span> stroke<span class="op">:</span> <span class="st">"#e2e2e2"</span> <span class="op">}),</span></span>
+<span id="cb4-62"><a href="#cb4-62"></a>    Plot<span class="op">.</span><span class="fu">dot</span><span class="op">(</span>filtered<span class="op">,</span> <span class="op">{</span></span>
+<span id="cb4-63"><a href="#cb4-63"></a>      x<span class="op">:</span> <span class="st">"longitude"</span><span class="op">,</span></span>
+<span id="cb4-64"><a href="#cb4-64"></a>      y<span class="op">:</span> <span class="st">"latitude"</span><span class="op">,</span></span>
+<span id="cb4-65"><a href="#cb4-65"></a>      r<span class="op">:</span> <span class="st">"Total_MW"</span><span class="op">,</span></span>
+<span id="cb4-66"><a href="#cb4-66"></a>      fill<span class="op">:</span> p <span class="op">=&gt;</span> <span class="fu">colors</span><span class="op">(</span>p<span class="op">.</span><span class="fu">PrimSource</span><span class="op">),</span></span>
+<span id="cb4-67"><a href="#cb4-67"></a>      opacity<span class="op">:</span> <span class="fl">0.7</span></span>
+<span id="cb4-68"><a href="#cb4-68"></a>    <span class="op">})</span></span>
+<span id="cb4-69"><a href="#cb4-69"></a>  <span class="op">],</span></span>
+<span id="cb4-70"><a href="#cb4-70"></a>  r<span class="op">:</span> <span class="op">{</span> range<span class="op">:</span> <span class="op">[</span><span class="dv">1</span><span class="op">,</span> <span class="dv">15</span><span class="op">]</span> <span class="op">},</span></span>
+<span id="cb4-71"><a href="#cb4-71"></a>  color<span class="op">:</span> <span class="op">{</span> legend<span class="op">:</span> <span class="kw">true</span> <span class="op">},</span></span>
+<span id="cb4-72"><a href="#cb4-72"></a>  height<span class="op">:</span> <span class="dv">500</span><span class="op">,</span></span>
+<span id="cb4-73"><a href="#cb4-73"></a>  width<span class="op">:</span> <span class="dv">800</span><span class="op">,</span></span>
+<span id="cb4-74"><a href="#cb4-74"></a>  margin<span class="op">:</span> <span class="dv">50</span></span>
+<span id="cb4-75"><a href="#cb4-75"></a><span class="op">})</span></span>
+<span id="cb4-76"><a href="#cb4-76"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+OJS Syntax Error (line 56, column 23)Unexpected token
+</div>
+</div>
+<div class="callout-body-container callout-body">
 
+</div>
 </div>
 </div>
 </div>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>This the underlying CSV dataset that is getting filtered.</p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="64" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 63;"><span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="55" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 54;"><span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="expression">
 
@@ -195,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </main>
 <!-- /main column -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIGdldCB0aGUgZGF0YVxuXG51cyA9IEZpbGVBdHRhY2htZW50KFwidXMtY291bnRpZXMtMTBtLmpzb25cIikuanNvbigpXG5zdGF0ZXMgPSB0b3BvanNvbi5mZWF0dXJlKHVzLCB1cy5vYmplY3RzLnN0YXRlcylcblxuZGF0YSA9IEZpbGVBdHRhY2htZW50KFwidXNfcG93ZXJfcGxhbnRzLmNzdlwiKS5jc3Yoe3R5cGU6IHRydWUgfSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBlbmVyZ3lfdHlwZSA9IElucHV0cy5jaGVja2JveChcbiAgW1wiY29hbFwiLCBcImdlb3RoZXJtYWxcIiwgXCJoeWRyb2VsZWN0cmljXCIsIFwibmF0cnVhbCBnYXNcIiwgXCJudWNsZWFyXCIsIFwib3RoZXJcIiwgXCJzb2xhclwiLCBcIndpbmRcIl0sXG4gIHtcbiAgICBcImxhYmVsXCI6IFwiRW5lcmd5IFR5cGVcIixcbiAgICBcInZhbHVlXCI6IFtcImNvYWxcIiwgXCJnZW90aGVybWFsXCIsIFwiaHlkcm9lbGVjdHJpY1wiLCBcIm5hdHJ1YWwgZ2FzXCIsIFwibnVjbGVhclwiLCBcIm90aGVyXCIsIFwic29sYXJcIiwgXCJ3aW5kXCJdLFxuICB9XG4pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBhIGZ1bmN0aW9uIHRoYXQgd2lsbCByZXR1cm4gdGhlIGRhdGFzZXQgZmlsdGVyZWQgYnkgd2hldGhlciB0aGUgUHJpbVNvdXJjZSBwcm9wZXJ0eSBpcyBpbiB0aGUgbGlzdCBvZiBlbmVyZ3lfdHlwZSB2YWx1ZXMuXG5cbmZpbHRlcmVkID0gZGF0YS5maWx0ZXIoZnVuY3Rpb24ocGxhbnQpIHtcbiAgcmV0dXJuIGVuZXJneV90eXBlLmluZGV4T2YocGxhbnQuUHJpbVNvdXJjZSkgPj0gMFxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIG5vdyBtYXAgdXNpbmcgdGhlIGBmaWx0ZXJlZGAgXG5cblBsb3QucGxvdCh7XG4gIHByb2plY3Rpb246IFwiYWxiZXJzLXVzYVwiLFxuICBtYXJrczogW1xuICAgIFBsb3QuZ2VvKHN0YXRlcywgeyBmaWxsOiBcIndoaXRlXCIsIHN0cm9rZTogXCIjZTJlMmUyXCIgfSksXG4gICAgUGxvdC5kb3QoZmlsdGVyZWQsIHtcbiAgICAgIHg6IFwibG9uZ2l0dWRlXCIsXG4gICAgICB5OiBcImxhdGl0dWRlXCIsXG4gICAgICByOiBcIlRvdGFsX01XXCIsXG4gICAgICBmaWxsOiBcIlByaW1Tb3VyY2VcIixcbiAgICAgIG9wYWNpdHk6IDAuN1xuICAgIH0pXG4gIF0sXG4gIHI6IHsgcmFuZ2U6IFsxLCAxNV0gfSxcbiAgY29sb3I6IHsgbGVnZW5kOiB0cnVlIH0sXG4gIGhlaWdodDogNTAwLFxuICB3aWR0aDogODAwLFxuICBtYXJnaW46IDUwXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC01IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiSW5wdXRzLnRhYmxlKGZpbHRlcmVkKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdlbmVyZ3lfdHlwZScpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIGdldCB0aGUgZGF0YVxuXG51cyA9IEZpbGVBdHRhY2htZW50KFwidXMtY291bnRpZXMtMTBtLmpzb25cIikuanNvbigpXG5zdGF0ZXMgPSB0b3BvanNvbi5mZWF0dXJlKHVzLCB1cy5vYmplY3RzLnN0YXRlcylcblxuZGF0YSA9IEZpbGVBdHRhY2htZW50KFwidXNfcG93ZXJfcGxhbnRzLmNzdlwiKS5jc3Yoe3R5cGU6IHRydWUgfSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBlbmVyZ3lfdHlwZSA9IElucHV0cy5jaGVja2JveChcbiAgW1wiY29hbFwiLCBcImdlb3RoZXJtYWxcIiwgXCJoeWRyb2VsZWN0cmljXCIsIFwibmF0cnVhbCBnYXNcIiwgXCJudWNsZWFyXCIsIFwib3RoZXJcIiwgXCJzb2xhclwiLCBcIndpbmRcIl0sXG4gIHtcbiAgICBcImxhYmVsXCI6IFwiRW5lcmd5IFR5cGVcIixcbiAgICBcInZhbHVlXCI6IFtcImNvYWxcIiwgXCJnZW90aGVybWFsXCIsIFwiaHlkcm9lbGVjdHJpY1wiLCBcIm5hdHJ1YWwgZ2FzXCIsIFwibnVjbGVhclwiLCBcIm90aGVyXCIsIFwic29sYXJcIiwgXCJ3aW5kXCJdLFxuICB9XG4pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyBhIGZ1bmN0aW9uIHRoYXQgd2lsbCByZXR1cm4gdGhlIGRhdGFzZXQgZmlsdGVyZWQgYnkgd2hldGhlciB0aGUgUHJpbVNvdXJjZSBwcm9wZXJ0eSBpcyBpbiB0aGUgbGlzdCBvZiBlbmVyZ3lfdHlwZSB2YWx1ZXMuXG5cbmZpbHRlcmVkID0gZGF0YS5maWx0ZXIoZnVuY3Rpb24ocGxhbnQpIHtcbiAgcmV0dXJuIGVuZXJneV90eXBlLmluZGV4T2YocGxhbnQuUHJpbVNvdXJjZSkgPj0gMFxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IklucHV0cy50YWJsZShmaWx0ZXJlZClcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZW5lcmd5X3R5cGUnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -692,33 +721,51 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="in">// now map using the `filtered` </span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="in">// create a function that returns a consistent color for an energy source</span></span>
 <span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="in">Plot.plot({</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="in">  projection: "albers-usa",</span></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="in">  marks: [</span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="in">    Plot.geo(states, { fill: "white", stroke: "#e2e2e2" }),</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="in">    Plot.dot(filtered, {</span></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="in">      x: "longitude",</span></span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="in">      y: "latitude",</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="in">      r: "Total_MW",</span></span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="in">      fill: "PrimSource",</span></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="in">      opacity: 0.7</span></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="in">    })</span></span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="in">  ],</span></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="in">  r: { range: [1, 15] },</span></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="in">  color: { legend: true },</span></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="in">  height: 500,</span></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="in">  width: 800,</span></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="in">  margin: 50</span></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data</span></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="in">Inputs.table(filtered)</span></span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="in">colors = function(source) {</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="in">  return {</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="in">    "coal": "darkgray",</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="in">    "geothermal": "orange",</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="in">    "hydroelectric": "blue",</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="in">    "natrual gas": "green",</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="in">    "nuclear": "hotpink",</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="in">    "other": "lavender",</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="in">    "solar": "gold",</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="in">    "wind": "palegreen"</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="in">  }[source]</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="in">// now map using the `filtered` and `colors` functions:</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="in">Plot.plot({</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="in">  projection: "albers-usa",</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="in">  marks: [</span></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="in">    Plot.geo(states, { fill: "white", stroke: "#e2e2e2" }),</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="in">    Plot.dot(filtered, {</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="in">      x: "longitude",</span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="in">      y: "latitude",</span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="in">      r: "Total_MW",</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a><span class="in">      fill: p =&gt; colors(p.PrimSource),</span></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a><span class="in">      opacity: 0.7</span></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a><span class="in">    })</span></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a><span class="in">  ],</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a><span class="in">  r: { range: [1, 15] },</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="in">  color: { legend: true },</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="in">  height: 500,</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="in">  width: 800,</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a><span class="in">  margin: 50</span></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>This the underlying CSV dataset that is getting filtered.</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="in">Inputs.table(filtered)</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
