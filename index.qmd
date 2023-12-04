@@ -4,18 +4,22 @@ format:
   html:
     toc: false
     echo: false
-    keep-hidden: true
+    keep-hidden: false
     code-tools: true
 ---
 
 ```{ojs}
+// get the data
+
 us = FileAttachment("us-counties-10m.json").json()
 states = topojson.feature(us, us.objects.states)
+
 data = FileAttachment("us_power_plants.csv").csv({type: true })
 ```
 
 ```{ojs}
-//| panel: input
+// create an set of checkbox inputs called energy_type
+
 viewof energy_type = Inputs.checkbox(
   ["coal", "geothermal", "hydroelectric", "natrual gas", "nuclear", "other", "solar", "wind"],
   {
@@ -25,10 +29,17 @@ viewof energy_type = Inputs.checkbox(
 )
 ```
 
-## Map
+```{ojs}
+// a function that will return the dataset filtered by whether the PrimSource property is in the list of energy_type values.
 
+filtered = data.filter(function(plant) {
+  return energy_type.indexOf(plant.PrimSource) >= 0
+})
+```
 
 ```{ojs}
+// now map using the `filtered` 
+
 Plot.plot({
   projection: "albers-usa",
   marks: [
@@ -37,29 +48,14 @@ Plot.plot({
       x: "longitude",
       y: "latitude",
       r: "Total_MW",
-      fill: "PrimSource", // Update dot fill color to depend on primary source (variable: PrimSource)
-      opacity: 0.7 // Decrease opacity (0 = transparent, 1 = opaque)
+      fill: "PrimSource",
+      opacity: 0.7
     })
   ],
-  r: { range: [1, 15] }, // Limit the size range for dot radii
-  color: { legend: true }, // Include a legend for the fill color
+  r: { range: [1, 15] },
+  color: { legend: true },
   height: 500,
   width: 800,
   margin: 50
 })
 ```
-
-## Data
-
-```{ojs}
-Inputs.table(filtered)
-```
-
-:::
-
-```{ojs}
-filtered = data.filter(function(plant) {
-  return energy_type.indexOf(plant.PrimSource) >= 0
-})
-```
-
